@@ -1,0 +1,150 @@
+﻿<Window x:Class="WoWLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WoWLauncher"
+        mc:Ignorable="d"
+      
+        WindowStyle="None" AllowsTransparency="True" 
+        Background="Transparent"
+        
+        Title="World of Warcraft Launcher" Height="640" Width="855">
+
+    <Window.Resources>
+        <Style TargetType="RichTextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBoxBase">
+                        <Border BorderThickness="{TemplateBinding Border.BorderThickness}"
+                    BorderBrush="{TemplateBinding Border.BorderBrush}"
+                    Background="{TemplateBinding Panel.Background}"
+                    Name="border"
+                    SnapsToDevicePixels="True">
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Name="PART_ContentHost" Focusable="False" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="UIElement.IsEnabled" Value="False">
+                                <Setter Property="UIElement.Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="UIElement.IsKeyboardFocused" Value="True">
+                                <Setter Property="Border.BorderBrush" TargetName="border">
+                                    <Setter.Value>
+                                        <SolidColorBrush>#FF569DE5</SolidColorBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PlayBtn" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/WoWLauncher;component/images/Button-Hover.png" Stretch="None" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/WoWLauncher;component/images/Button-Click.png" Stretch="None" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/WoWLauncher;component/images/Button-Disabled.png" Stretch="None" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CloseBtn" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/WoWLauncher;component/images/Close-Hover.png" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/WoWLauncher;component/images/Close-Click.png" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Image MouseDown="Window_MouseDown" HorizontalAlignment="Left" Height="639" VerticalAlignment="Top" Width="867" Source="/WoWLauncher;component/images/Window.png" Stretch="None" Margin="1,0,0,0" />
+        <Button x:Name="playBtn" Style="{DynamicResource PlayBtn}"  Content="Play" HorizontalAlignment="Left" Margin="635,507,0,0" VerticalAlignment="Top" Height="62" Width="151" IsDefault="True" Foreground="White" BorderBrush="{x:Null}" FontSize="20" FontFamily="Californian FB" FontStretch="Normal" FontWeight="Bold" Click="playBtn_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/WoWLauncher;component/images/Button.png" Stretch="None"/>
+            </Button.Background>
+        </Button>
+
+        <Image x:Name="serverStatusIcon" HorizontalAlignment="Left" Height="20" Margin="80,480,0,0" VerticalAlignment="Top" Width="22" Source="/WoWLauncher;component/images/Indicator-Yellow.PNG" Stretch="None"/>
+        <Label x:Name="serverStatus" Content="Checking server status..." HorizontalAlignment="Left" Margin="99,473,0,0" VerticalAlignment="Top" Width="249" FontSize="20" FontWeight="Bold" Foreground="White" FontFamily="Californian FB"/>
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="42" Margin="80,517,0,0" VerticalAlignment="Top" Width="537" Foreground="#FF06A4B0" BorderThickness="0,0,0,0" Background="#FF192D33"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="60,498,0,0" VerticalAlignment="Top" Width="575" Source="/WoWLauncher;component/images/PatchBar.png"/>
+
+        <RichTextBox Margin="99,278,100,187" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" IsReadOnly="True" SelectionTextBrush="{x:Null}" Focusable="False" AllowDrop="False" FontFamily="Californian FB" IsDocumentEnabled="True" Cursor="Arrow" >
+            <FlowDocument>
+                <Paragraph TextAlignment="Center">
+                    <Run Text="Welcome to some Private Server!" FontSize="32" FontWeight="Bold" />
+                </Paragraph>
+                <Paragraph TextAlignment="Center">
+                    <Run Text="In order to play, you must have an account on" FontSize="18"/>
+                    <TextBlock>                
+                        <Hyperlink NavigateUri="https://example.com" FontSize="18" ToolTip="Some Company" Foreground="Cyan" RequestNavigate="Hyperlink_RequestNavigate" >
+                           https://example.com
+                        </Hyperlink>
+                    </TextBlock>
+                    <Run Text="."/>
+                </Paragraph>
+                <Paragraph TextAlignment="Center">
+                    <Run Text="For assistance, please reach out to someone else."  FontSize="14"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Label x:Name="progressInfo" Content="0% (Downloaded 0/0 MB, 0 Mb/s)" HorizontalAlignment="Left" Margin="80,564,0,0" VerticalAlignment="Top" Width="537" Foreground="#FF4ABDE4" FontFamily="Californian FB" Visibility="Hidden"/>
+        <Button Style="{DynamicResource CloseBtn}" HorizontalAlignment="Left" Margin="782,136,0,0" VerticalAlignment="Top" Height="42" Width="43" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="Close_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/WoWLauncher;component/images/Close.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
