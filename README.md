@@ -17,11 +17,11 @@ This is a custom launcher meant for private servers running the popular MMORPG.
 
 ### Contributing
 A short to-do list for future work:
-- Settings window
--- Toggle to close launcher on client start
--- Toggle to download different types of patches (PTR-style)
--- Toggle to download addons in addition to patches
--- Launcher graphical updates (other expansions or deprecate any used Blizzard graphics)
+* Settings window
+  * Toggle to close launcher on client start
+  * Toggle to download different types of patches (PTR-style)
+  * Toggle to download addons in addition to patches
+  * Launcher graphical updates (other expansions or deprecate any used Blizzard graphics)
 
 ### License
 Graphics used in this sample are copyright Activision Blizzard Entertainment and its
