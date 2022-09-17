@@ -24,7 +24,7 @@ A short to-do list for future work:
   * Launcher graphical updates (other expansions or deprecate any used Blizzard graphics)
 
 ### License
-Graphics used in this sample are copyright Activision Blizzard Entertainment and its
-respective products, namely World of Warcraft (or WoW for short).
+All trademarks referenced herein are the properties of their respective owners. 
+Graphics, icons and other visual works used in this example are copyright Blizzard Entertainment, Inc.
 
 See LICENSE for usage for the code and launcher itself.
