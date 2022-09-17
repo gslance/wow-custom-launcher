@@ -1,5 +1,5 @@
 # Custom World of Warcraft Launcher
-This is a cuustom launcher meant for private servers running the popular MMORPG. 
+This is a custom launcher meant for private servers running the popular MMORPG. 
 
 ### Features
 - Downloads latest MPQ patch files for users.
