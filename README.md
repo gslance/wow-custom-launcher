@@ -2,18 +2,23 @@
 This is a custom launcher meant for private servers running the popular MMORPG. 
 
 ### Features
-- Downloads latest MPQ patch files for users.
-- Updater to keep the launcher itself up-to-date.
-- Server status notification.
-- Fancy launcher graphics.
+* Downloads latest MPQ patch files for users.
+* Updater to keep the launcher itself up-to-date.
+* Server status notification.
+* Fancy launcher graphics.
 
 ### Requirements
+* Windows 10 or newer.
+
 #### For developers
-- Visual Studio 2019 or newer
-- .NET Desktop development tools (.NET 6.0 or better)
+* Visual Studio 2019 or newer
+* .NET Desktop development tools (.NET 6.0 or better)
 
 #### For users
-- .NET Desktop Runtime 6.0 or higher
+* .NET Desktop Runtime 6.0 or higher
+
+#### Redistribution
+* When compiled, place Updater.exe and WoWLauncher.exe together.
 
 ### Contributing
 A short to-do list for future work:
